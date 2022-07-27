@@ -67,6 +67,7 @@ export class URLController {
     @response() res: Response
   ): Promise<Response<any, Record<string, any>>> {
     const body = requestMapper(req);
+    console.log(body);
     const urls = await this.urlService.storeUrl(body);
     return res.status(200).json(urls);
   }
