@@ -1,37 +1,17 @@
 version: "3"
-services:
-  url:
-    build: ./
-    env_file:
-      - ./.env
-    ports:
-      - "3000:3000"
-    depends_on:
-      - redis
-    networks:
-      webnet:
-        aliases:
-          - url
 
-  dynamodb:
+services:
+  dynamodb-server:
     image: amazon/dynamodb-local
     ports:
       - 8000:8000
+    container_name: dynamo-server
     command: ["-jar", "DynamoDBLocal.jar", "-inMemory", "-sharedDb"]
-    networks:
-      webnet:
-        aliases:
-          - dynamo
 
-  redis:
-    image: redis/redis-stack
-    container_name: redis
+  url:
+    build: ./
+    env_file: ./.env
     ports:
-      - "6379:6379"
-    networks:
-      webnet:
-        aliases:
-          - redis
-
-networks:
-  webnet:
+      - "3001:3001"
+    depends_on:
+      - dynamodb-server

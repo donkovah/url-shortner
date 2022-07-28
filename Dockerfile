@@ -3,10 +3,14 @@ FROM node:16-alpine
 
 WORKDIR /app
 
-COPY ["package.json", "package-lock.json*", "./"]
+COPY package*.json ./
 
 RUN npm install
 
-EXPOSE 3000
+COPY . .
 
-CMD [ "npm", "start" ]
+RUN npm run build
+
+EXPOSE 3001
+
+CMD [ "node", "dist/server.js" ]

@@ -39,6 +39,5 @@ export class URLRepository {
 
   async storeUrl(body: UrlBaseParams): Promise<any> {
     return this.urlEntity.storeUrl(body);
-    console.log("some", body);
   }
 }

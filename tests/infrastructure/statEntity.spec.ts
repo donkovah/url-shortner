@@ -7,7 +7,7 @@ describe("Url Entity", () => {
   };
 
   beforeAll(async () => {
-    await urlEntity.storeStats(url);
+    await urlEntity.updateStats(url.shortUrl);
   });
 
   it("Get Url Entity", async () => {

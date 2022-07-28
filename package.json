@@ -9,6 +9,7 @@
   "author": "Oluwasegun Kesington",
   "license": "MIT",
   "scripts": {
+    "local:db": "docker-compose up -d",
     "build": "npm run build-ts && npm run lint",
     "build-ts": "tsc",
     "build:dev": "npm run build-ts",

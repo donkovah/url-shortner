@@ -15,6 +15,7 @@ import {
   RecordNotFoundException,
   RecordAlreadyExistException,
 } from "./shared/Errors";
+import { createLocalUrlTable } from "./domain/models/table";
 
 if (process.env.NODE_ENV === "development") {
   const logger = makeLoggerMiddleware();
@@ -22,6 +23,9 @@ if (process.env.NODE_ENV === "development") {
 }
 // start the server
 const server = new InversifyExpressServer(iocContainer);
+createLocalUrlTable().then(() => {
+  "Local Table created successfully";
+});
 server.setErrorConfig((app) => {
   app.use(
     (

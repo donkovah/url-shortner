@@ -8,13 +8,13 @@ const TYPES = {
 export default TYPES;
 
 export type Config = {
-  env: string;
-  port: string;
-  host: string;
-  storage: string;
-  dbUrl: string;
-  dbName: string;
-  redisHost: string;
+  env: any;
+  port: any;
+  host: any;
+  storage: any;
+  dbUrl: any;
+  dbName: any;
+  redisHost: any;
 };
 
 export type UrlBodyParams = {
