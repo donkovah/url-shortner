@@ -1,7 +1,8 @@
 import { inject, injectable } from "inversify";
 import "reflect-metadata";
 import { IUrlEntity, IStatEntity } from "../contracts/index";
-import TYPES, { UrlBaseParams } from "../../shared/types";
+import TYPES, { UrlAttribute, UrlBaseParams } from "../../shared/types";
+import { Stats, Url } from "../types";
 
 @injectable()
 export class URLRepository {
@@ -16,28 +17,25 @@ export class URLRepository {
     this.statsEntity = statrep;
   }
 
-  async getUrls(): Promise<any> {
-    const urls = await this.urlEntity.getUrls();
+  async getUrls(): Promise<UrlAttribute[]> {
+    const urls = this.urlEntity.getUrls();
     return urls;
   }
-  async getUrl(key: string): Promise<any> {
-    const url = await this.urlEntity.getUrl(key);
+  async getUrl(key: string): Promise<UrlAttribute> {
+    const url = this.urlEntity.getUrl(key);
     return url;
   }
 
-  async getUrlStats(key: string): Promise<any> {
+  async getUrlStats(key: string): Promise<Stats[]> {
     const url = await this.statsEntity.getStats(key);
     return url;
   }
 
-  async updateUrlStats(key: string): Promise<any> {
-    console.log("stats");
-
-    const url = await this.statsEntity.updateStats(key);
-    return url;
+  async updateUrlStats(key: string): Promise<void> {
+    return this.statsEntity.updateStats(key);
   }
 
-  async storeUrl(body: UrlBaseParams): Promise<any> {
+  async storeUrl(body: UrlBaseParams): Promise<void> {
     return this.urlEntity.storeUrl(body);
   }
 }

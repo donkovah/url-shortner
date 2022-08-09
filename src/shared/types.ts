@@ -8,13 +8,13 @@ const TYPES = {
 export default TYPES;
 
 export type Config = {
-  env: any;
-  port: any;
-  host: any;
-  storage: any;
-  dbUrl: any;
-  dbName: any;
-  redisHost: any;
+  env: string;
+  port: string;
+  host: string;
+  storage: string;
+  dbUrl: string;
+  dbName: string;
+  redisHost: string;
 };
 
 export type UrlBodyParams = {
@@ -25,4 +25,11 @@ export type UrlBodyParams = {
 export interface UrlBaseParams {
   shortUrl: string;
   longUrl: string;
+}
+
+export interface UrlAttribute {
+  shortUrl: string;
+  longUrl: string;
+  created?: Date;
+  modified?: Date;
 }

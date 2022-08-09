@@ -1,9 +1,10 @@
-import { UrlBodyParams } from "../../shared/types";
+import { UrlAttribute, UrlBodyParams } from "../../shared/types";
+import { Stats } from "../../domain/types/index";
 
 export interface IUrlService {
-  getUrls(): any;
-  getUrl(key: string): any;
-  getUrlStats(key: string): any;
-  clickedUrl(key: string): any;
-  storeUrl(key: UrlBodyParams): any;
+  getUrls(): Promise<UrlAttribute[]>;
+  getUrl(key: string): UrlAttribute;
+  getUrlStats(key: string): Stats;
+  clickedUrl(key: string): string;
+  storeUrl(key: UrlBodyParams): void;
 }

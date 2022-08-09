@@ -5,6 +5,7 @@ import { Url } from "../types";
 import { createUrlTable } from "./table";
 import "reflect-metadata";
 import { config } from "../../config";
+import { UrlAttribute } from "../../shared/types";
 
 @injectable()
 export class UrlEntity implements IUrlEntity {
@@ -24,21 +25,21 @@ export class UrlEntity implements IUrlEntity {
     table: createUrlTable(),
   });
 
-  async getUrls(): Promise<Url[]> {
+  async getUrls(): Promise<UrlAttribute[]> {
     const urls = (
       await this.repo.scan({
         filters: [{ attr: "longUrl", exists: true }],
       })
-    ).Items as unknown as Url[];
+    ).Items as unknown as UrlAttribute[];
     return urls;
   }
 
-  async getUrl(key: string): Promise<Url> {
+  async getUrl(key: string): Promise<UrlAttribute> {
     const url = await this.repo.query(`URLKEY#${key}`, {
       filters: [{ attr: "longUrl", exists: true }],
     });
 
-    return url.Items[0] as Url;
+    return url.Items[0] as UrlAttribute;
   }
 
   async storeUrl(params: Url): Promise<void> {

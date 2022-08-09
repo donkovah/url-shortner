@@ -1,21 +1,21 @@
-import { Url } from "../types";
-import { UrlBaseParams } from "../../shared/types";
+import { Stats, UrlStats } from "../types";
+import { UrlAttribute, UrlBaseParams } from "../../shared/types";
 
 export interface IUrlRepository {
-  getUrls(): any;
-  getUrl(key: string): any;
-  storeUrl(key: UrlBaseParams): any;
-  getUrlStats(key: string): any;
-  updateUrlStats(key: string): any;
+  getUrls(): UrlAttribute[];
+  getUrl(key: string): UrlAttribute;
+  storeUrl(key: UrlBaseParams): UrlAttribute;
+  getUrlStats(key: string): UrlStats;
+  updateUrlStats(key: string): UrlAttribute;
 }
 
 export interface IStatEntity {
-  getStats(key: string): any;
-  updateStats(key: string): any;
+  getStats(key: string): Promise<Stats[]>;
+  updateStats(key: string): void;
 }
 
 export interface IUrlEntity {
-  getUrls(): any;
-  getUrl(key: string): any;
-  storeUrl(param: Url): any;
+  getUrls(): Promise<UrlAttribute[]>;
+  getUrl(key: string): Promise<UrlAttribute>;
+  storeUrl(param: UrlAttribute): Promise<void>;
 }

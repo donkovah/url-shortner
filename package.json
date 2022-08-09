@@ -9,7 +9,8 @@
   "author": "Oluwasegun Kesington",
   "license": "MIT",
   "scripts": {
-    "local:db": "docker-compose up -d",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose downn -d",
     "build": "npm run build-ts && npm run lint",
     "build-ts": "tsc",
     "build:dev": "npm run build-ts",
@@ -21,12 +22,10 @@
   },
   "dependencies": {
     "aws-sdk": "^2.1181.0",
-    "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "dynamodb-toolbox": "^0.4.3",
     "errorhandler": "^1.5.1",
     "express": "4.17.1",
-    "express-validator": "6.9.2",
     "faker": "^6.6.6",
     "http-errors": "^2.0.0",
     "http-status": "^1.5.2",

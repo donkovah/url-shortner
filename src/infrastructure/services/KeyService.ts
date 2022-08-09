@@ -1,4 +1,4 @@
-import { injectable, inject } from "inversify";
+import { injectable } from "inversify";
 import "reflect-metadata";
 import { IKeyService } from "../contracts/IKeyService";
 
